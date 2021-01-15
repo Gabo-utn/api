@@ -1,0 +1,51 @@
+<<<<<<< HEAD
+GET http://localhost:8888/producto.php HTTP/1.1
+
+###
+
+POST http://localhost:8888/hero_post.php HTTP/1.1
+
+{"id": 0, "name": "Nuevo 3"}
+=======
+GET http://localhost:8888/productos.php HTTP/1.1
+
+###
+
+GET http://localhost:8888/productos.php?prodDescripcion=pro HTTP/1.1
+
+###
+
+GET http://localhost:8888/productos.php/14 HTTP/1.1
+
+###
+
+DELETE http://localhost:8888/productos.php/4 HTTP/1.1
+>>>>>>> 06d6b93d170e81f2eab5d0bf12fa428889da4dae
+
+
+###
+
+<<<<<<< HEAD
+PUT http://localhost:8888/hero_put.php HTTP/1.1
+
+{"id": 6, "name": "Modificado"}
+=======
+POST http://localhost:8888/productos.php HTTP/1.1
+Content-Type: application/json
+
+{"prodDescripcion": "test",
+ "prodPrecio": 11111}
+>>>>>>> 06d6b93d170e81f2eab5d0bf12fa428889da4dae
+
+
+###
+
+<<<<<<< HEAD
+GET http://localhost:8888/hero_delete.php?9 HTTP/1.1
+=======
+PUT http://localhost:8888/productos.php HTTP/1.1
+
+{   "prodId": 5,
+    "prodDescripcion": "producto actualizado",
+    "prodPrecio": 33333}
+>>>>>>> 06d6b93d170e81f2eab5d0bf12fa428889da4dae
