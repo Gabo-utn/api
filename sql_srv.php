@@ -36,13 +36,6 @@ class SQL
     public static function close($db){
         sqlsrv_close($db);
     }
-    public static function query($db, $query, $params= Array()) {
-        $stmt = sqlsrv_query($db, $query, $params);
-        if ($stmt === false) {
-            SQL::error(500, 'Error interno del servidor', $db);
-        }
-        return($stmt);
-    }
     
 }
 

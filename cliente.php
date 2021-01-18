@@ -1,11 +1,11 @@
 <?php
 include_once "init.php";
-include_once "./model/producto.php";
+include_once "./model/cliente.php";
 
 
 $response = [];
 $db = SQL::connect();
-$model = new Producto();
+$model = new Cliente();
 
 //-------------------------------------GET
 if (METHOD == "GET" && !defined("ID")){
