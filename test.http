@@ -34,8 +34,9 @@ PUT http://localhost:8888/producto.php HTTP/1.1
     "prodPrecio": 345
 }
 
-
+###
 GET http://localhost:8888/cliente.php HTTP/1.1
+
 
 ########################
 PUT http://localhost:8888/pedido.php HTTP/1.1

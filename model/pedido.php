@@ -8,9 +8,9 @@ class Pedido
         ,pediClienId
         ,CONVERT(VARCHAR, pediFechaAlta, 126) pediFechaAlta
         ,pediBorrado
-        ,cliNombre'; 
+        ,clienNombre'; 
 
-    public $join = " LEFT OUTER JOIN Cliente on pediCliId = cliId";
+    public $join = " LEFT OUTER JOIN Cliente on pediClienId = clienId";
     
     public function get ($db) {
         $sql = "SELECT $this->fields FROM $this->table
@@ -39,15 +39,15 @@ class Pedido
         $stmt = SQL::query($db,
         "INSERT INTO $this->table
             (pediFecha
-            ,pediCliId
+            ,pediClienId
             ,pediFechaAlta
             ,pediBorrado)
         VALUES (?,?,GETDATE(),0);
         SELECT @@IDENTITY pediId, CONVERT(VARCHAR, GETDATE(), 126) pediFechaAlta;",
-        [DATA["pediFecha"], DATA["pediCliId"]] );
+        [DATA["pediFecha"], DATA["pediClienId"]] );
 
-        sqlsrv_fetch($stmt); // INSERT
-        sqlsrv_next_result($stmt);// SELECT @@IDENTITY
+        sqlsrv_fetch($stmt); 
+        sqlsrv_next_result($stmt);
         $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
         $results = DATA;
@@ -61,11 +61,11 @@ class Pedido
         $stmt = SQL::query($db,
         "UPDATE Pedido
         SET pediFecha = ?
-            ,pediCliId = ?
+            ,pediClienId = ?
         WHERE pediId = ?",
         [
             DATA["pediFecha"],
-            DATA["pediCliId"],
+            DATA["pediClienId"],
             DATA["pediId"]
         ] );
 
