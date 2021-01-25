@@ -4,16 +4,16 @@ GET http://localhost:8888/producto.php HTTP/1.1
 
 GET http://localhost:8888/producto.php?prodDescripcion=pro HTTP/1.1
 
-###
+#################################v
 
 GET http://localhost:8888/producto.php/15 HTTP/1.1
 
-###
+#################################
 
 DELETE http://localhost:8888/producto.php/14 HTTP/1.1
 
 
-###
+#############################################
 
 POST http://localhost:8888/producto.php HTTP/1.1
 Content-Type: application/json
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 
-###
+###################################################
 
 PUT http://localhost:8888/producto.php HTTP/1.1
 
@@ -35,3 +35,13 @@ PUT http://localhost:8888/producto.php HTTP/1.1
 }
 
 
+GET http://localhost:8888/cliente.php HTTP/1.1
+
+########################
+PUT http://localhost:8888/pedido.php HTTP/1.1
+
+{
+    "pediId": 33,
+    "pediFecha":"2020-12-14T00:00:00",
+    "pediClienId": 25
+}

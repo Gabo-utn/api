@@ -63,8 +63,8 @@ class Producto
         SELECT @@IDENTITY prodId, CONVERT(VARCHAR, GETDATE(), 126) prodFechaAlta;",
         [DATA["prodDescripcion"], DATA["prodPrecio"]] );
 
-        sqlsrv_fetch($stmt); // INSERT
-        sqlsrv_next_result($stmt);// SELECT @@IDENTITY
+        sqlsrv_fetch($stmt); 
+        sqlsrv_next_result($stmt);
         $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
         $results = DATA;
