@@ -1,112 +1,31 @@
-### LOGIN
-
-POST http://localhost:8888/index.php/login HTTP/1.1
-Content-Type: application/json
-
-{
-    "usuaLogin":"admin",
-    "usuaPassword": "admin"
-}
-
-###
-
-
-POST http://localhost:8888/index.php/login HTTP/1.1
-Content-Type: application/json
-
-{
-    "usuaLogin":"carlos",
-    "usuaPassword": "12345"
-}
-
-
-
-
-
-
-### PRODUCTO
-
-GET http://localhost:8888/index.php/cliente HTTP/1.1
-
-###
-
-DELETE http://localhost:8888/index.php/cliente/20 HTTP/1.1
-
-
-
-
-### PRODUCTO
-
-GET http://localhost:8888/index.php/producto HTTP/1.1
-
-###
-
-DELETE http://localhost:8888/index.php/producto/11 HTTP/1.1
-
-
 
 ### PEDIDO
 
-GET http://localhost:8888/index.php/pedido HTTP/1.1
+GET http://localhost:8888/index.php/grupo HTTP/1.1
 
 ###
 
-DELETE http://localhost:8888/index.php/pedido/68 HTTP/1.1
-
-
-###
-
-POST http://localhost:8888/index.php/pedido HTTP/1.1
-Content-Type: application/json
-Authorization: 
-{
-    "pediFecha":"2020-12-15T00:00:00",
-    "pediClienId": 33
-}
+DELETE http://localhost:8888/index.php/grupo/1 HTTP/1.1
 
 
 ###
 
-PUT http://localhost:8888/index.php/pedido HTTP/1.1
-
-{
-    "pediId": 67,
-    "pediFecha":"2021-01-26T10:18:00",
-    "pediClienId": 25
-}
-
-
-
-### PEDIDO-DETALLE
-
-GET http://localhost:8888/index.php/pedido-detalle?detaPediId=66 HTTP/1.1
-
-###
-
-GET http://localhost:8888/index.php/pedido-detalle
-
-###
-
-DELETE http://localhost:8888/pedido-detalle.php/6 HTTP/1.1
-
-
-###
-
-POST http://localhost:8888/pedido.php HTTP/1.1
+POST http://localhost:8888/index.php/grupo HTTP/1.1
 Content-Type: application/json
 
-{"detaId":null,"detaPediId":null,"detaProdId":11,
-"detaCantidad":2,"detaPrecio":3,
-"detaBorrado":null,"detaFechaAlta":null,
-"prodDescripcion":null}
+{
+    "grupNombre":"Camionetas",
+    "grupDescripcion":"Camionetas Toyota modelo 2016"
+}
+
 
 ###
 
-PUT http://localhost:8888/pedido-detalle.php HTTP/1.1
+PUT http://localhost:8888/index.php/grupo HTTP/1.1
 
 {
-"detaId":4,"detaPediId":17,"detaProdId":20,
-"detaCantidad":1,"detaPrecio":11,
-"detaFechaAlta":"2020-12-15T10:58:40.727",
-"detaBorrado":0,"prodDescripcion":"Test1005"
-}
+    "grupId": 1,
+    "grupNombre": "Camionetas",
+    "grupDescripcion": "Camionetas Toyota modelo nuevo"
+  }
+

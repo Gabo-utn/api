@@ -41,20 +41,16 @@ include_once "globales.php";
 
 /************* API *************/
 
-include_once 'controllers/cliente.php';
-include_once 'controllers/producto.php';
-include_once 'controllers/pedido.php';
-include_once 'controllers/pedido-detalle.php';
-include_once 'controllers/login.php';
+include_once 'controllers/grupo.php';
 
 
 $app->get('/', function (Request $request, Response $response, $args) {
-    $response->getBody()->write("API Pedidos Version 1.3");
+    $response->getBody()->write("API");
     return $response;
 });
 
 $app->get('', function (Request $request, Response $response, $args) {
-    $response->getBody()->write("API Pedidos Version 1.3");
+    $response->getBody()->write("API");
     return $response;
 });
 

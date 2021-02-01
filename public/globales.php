@@ -17,7 +17,7 @@ class G
         return sqlsrv_get_field($result, 0);
     }
 
-    public static function CrearToken($data){// recibo un array
+    public static function CrearToken($data){
         $time = time();
         $token = array(
             'iat' => $time, // Tiempo que inició el token
@@ -25,7 +25,7 @@ class G
             'data' => $data
         );
 
-        return JWT::encode($token, TOKEN_KEY);// es una clave, la cual se genera el toquen
+        return JWT::encode($token, TOKEN_KEY);
     }
 
     
@@ -51,14 +51,14 @@ class G
     {
         $jwt= null;
         
-        if (isset(getallheaders()['Authorization'])) {// verifica si el tokken es valido
+        if (isset(getallheaders()['Authorization'])) {
             $jwt= getallheaders()['Authorization']  ;
         }
 
         
         if ($jwt) {
             try {
-                $token = JWT::decode($jwt, TOKEN_KEY, array('HS256'));//decodifica el token
+                $token = JWT::decode($jwt, TOKEN_KEY, array('HS256'));
                 // Chequea si la ip que hace la consulta es la misma que genero el Token
                 // if ($token->data->ip != G::ObtenerIP()) {
                 //     G::Fin(401, 'No autorizado, IP diferente');
@@ -118,9 +118,6 @@ class G
 		echo json_encode(array("error"=>$mensaje));
         // FALTA CERRAR LA CONEXION A LA BASE?
         die;
-        SQL::close($db);
-
-
 
     }
 
