@@ -29,3 +29,9 @@ PUT http://localhost:8888/index.php/grupo HTTP/1.1
     "grupDescripcion": "Camionetas Toyota modelo nuevo"
   }
 
+###
+Send Request
+GET http://localhost:8888/index.php/tarea HTTP/1.1
+###
+
+GET http://localhost:8888/index.php/servicio HTTP/1.1
