@@ -35,7 +35,7 @@ $app->delete('/grupo_servicio/{id}', function ($request, $response, $args) {
     });
 
 $app->post('/grupo_servicio', function ($request, $response, $args) {
-    //$token = G::Autenticar($request, "ADMIN_MODIFICAR");
+    //$token = G::Autenticar($request, "ADMIN_MODIFICAR"); mn
 
     $db = SQL::connect();
     $model = new GrupoServicio();
