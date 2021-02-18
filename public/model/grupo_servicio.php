@@ -49,12 +49,18 @@ class GrupoServicio
         "INSERT INTO $this->table
             (grusGrupId
             ,grusServId
+            ,grusPeriodo
+            ,grusKM
+            ,grusFecha
             ,grusFechaAlta
             ,grusBorrado)
-        VALUES (?,?,GETDATE(),0);
+        VALUES (?,?,?,?,?,GETDATE(),0);
         SELECT @@IDENTITY grusId, CONVERT(VARCHAR, GETDATE(), 126) grusFechaAlta;",
-        [ DATA["grusServId"]
-        ,DATA["grusGrupId"]] );
+        [DATA["grusGrupId"]
+        ,DATA["grusServId"]
+        ,DATA["grusPeriodo"]
+        ,DATA["grusKM"]
+        ,DATA["grusFecha"]] );
 
         sqlsrv_fetch($stmt); // INSERT
         sqlsrv_next_result($stmt);// SELECT @@IDENTITY

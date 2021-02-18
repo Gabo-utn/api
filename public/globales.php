@@ -116,7 +116,7 @@ class G
     public static function Fin($codigo, $mensaje){
         http_response_code($codigo);
 		echo json_encode(array("error"=>$mensaje));
-        // FALTA CERRAR LA CONEXION A LA BASE?
+        
         die;
 
     }
