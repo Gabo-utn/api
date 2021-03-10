@@ -1,7 +1,7 @@
 <?php
-include_once "model/grupo_servicio.php";
-
-$app->get('/grupo_servicio', function ($request, $response, $args) {
+include_once "model/grupo-servicio.php";
+//--GET
+$app->get('/grupo-servicio', function ($request, $response, $args) {
     //$token = G::Autenticar($request, "ADMIN_VER");
 
     $db = SQL::connect();
@@ -16,8 +16,8 @@ $app->get('/grupo_servicio', function ($request, $response, $args) {
     return $response
               ->withHeader('Content-Type', 'application/json');
     });
-
-$app->delete('/grupo_servicio/{id}', function ($request, $response, $args) {
+//DELETE
+$app->delete('/grupo-servicio/{id}', function ($request, $response, $args) {
 
     $id = $args['id'];
 
@@ -33,8 +33,8 @@ $app->delete('/grupo_servicio/{id}', function ($request, $response, $args) {
     return $response
               ->withHeader('Content-Type', 'application/json');
     });
-
-$app->post('/grupo_servicio', function ($request, $response, $args) {
+//POST
+$app->post('/grupo-servicio', function ($request, $response, $args) {
     //$token = G::Autenticar($request, "ADMIN_MODIFICAR"); mn
 
     $db = SQL::connect();
@@ -50,8 +50,8 @@ $app->post('/grupo_servicio', function ($request, $response, $args) {
     return $response
               ->withHeader('Content-Type', 'application/json');
 });
-
-$app->put('/grupo_servicio', function ($request, $response, $args) {
+//PUT
+$app->put('/grupo-servicio', function ($request, $response, $args) {
     //$token = G::Autenticar($request, "ADMIN_MODIFICAR");
 
     $db = SQL::connect();

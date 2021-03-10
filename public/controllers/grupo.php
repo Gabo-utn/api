@@ -1,6 +1,7 @@
 <?php
 include_once "model/grupo.php";
 
+//GET
 
 $app->get('/grupo', function ($request, $response, $args) {
     //$token = G::Autenticar($request, "ADMIN_VER");
@@ -18,6 +19,7 @@ $app->get('/grupo', function ($request, $response, $args) {
               ->withHeader('Content-Type', 'application/json');
     });
 
+// Delete
 
 $app->delete('/grupo/{id}', function ($request, $response, $args) {
 
@@ -36,6 +38,7 @@ $app->delete('/grupo/{id}', function ($request, $response, $args) {
               ->withHeader('Content-Type', 'application/json');
     });
 
+//Put   
 $app->put('/grupo', function ($request, $response, $args) {
         //$token = G::Autenticar($request, "ADMIN_MODIFICAR");
     
@@ -52,6 +55,8 @@ $app->put('/grupo', function ($request, $response, $args) {
         return $response
                   ->withHeader('Content-Type', 'application/json');
 });
+
+//Post
 
 $app->post('/grupo', function ($request, $response, $args) {
     //$token = G::Autenticar($request, "ADMIN_MODIFICAR");

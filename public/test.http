@@ -45,3 +45,15 @@ Content-Type: application/json
   "setaTareId": 1,
   "tareNombre": "test1",
 }
+
+###
+
+GET http://localhost:8888/index.php/grupo_servicio HTTP/1.1
+###
+GET http://localhost:8888/index.php/movil_servicio HTTP/1.1
+
+### movil-odometro
+
+
+GET http://localhost:8888/index.php/movil HTTP/1.1
+

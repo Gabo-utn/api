@@ -42,10 +42,15 @@ include_once "globales.php";
 /************* API *************/
 
 include_once 'controllers/grupo.php';
-include_once 'controllers/tarea.php';
 include_once 'controllers/servicio.php';
-include_once 'controllers/servicio_tarea.php';
-include_once 'controllers/grupo_servicio.php';
+include_once 'controllers/tarea.php';
+include_once 'controllers/servicio-tarea.php';
+include_once 'controllers/grupo-servicio.php';
+include_once 'controllers/movil.php';
+include_once 'controllers/movil-servicio.php';
+include_once 'controllers/movil-grupo.php';
+include_once 'controllers/movil-odometro.php';
+include_once 'controllers/movil-bitacora.php';
 
 
 $app->get('/', function (Request $request, Response $response, $args) {

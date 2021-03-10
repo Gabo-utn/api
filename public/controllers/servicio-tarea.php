@@ -1,7 +1,7 @@
 <?php
-include_once "model/servicio_tarea.php";
+include_once "model/servicio-tarea.php";
 
-$app->get('/servicio_tarea', function ($request, $response, $args) {
+$app->get('/servicio-tarea', function ($request, $response, $args) {
     //$token = G::Autenticar($request, "ADMIN_VER");
 
     $db = SQL::connect();
@@ -17,7 +17,7 @@ $app->get('/servicio_tarea', function ($request, $response, $args) {
               ->withHeader('Content-Type', 'application/json');
     });
 
-$app->delete('/servicio_tarea/{id}', function ($request, $response, $args) {
+$app->delete('/servicio-tarea/{id}', function ($request, $response, $args) {
 
     $id = $args['id'];
 
@@ -34,7 +34,7 @@ $app->delete('/servicio_tarea/{id}', function ($request, $response, $args) {
               ->withHeader('Content-Type', 'application/json');
     });
 
-$app->post('/servicio_tarea', function ($request, $response, $args) {
+$app->post('/servicio-tarea', function ($request, $response, $args) {
     //$token = G::Autenticar($request, "ADMIN_MODIFICAR");
 
     $db = SQL::connect();
@@ -51,7 +51,7 @@ $app->post('/servicio_tarea', function ($request, $response, $args) {
               ->withHeader('Content-Type', 'application/json');
 });
 
-$app->put('/servicio_tarea', function ($request, $response, $args) {
+$app->put('/servicio-tarea', function ($request, $response, $args) {
     //$token = G::Autenticar($request, "ADMIN_MODIFICAR");
 
     $db = SQL::connect();
