@@ -61,7 +61,7 @@ class Tarea
         sqlsrv_fetch($stmt); // INSERT
         sqlsrv_next_result($stmt);// SELECT @@IDENTITY
         $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-        // TENGO UNA DUDA 
+       
         $results = DATA;
         $results["tareId"] = $row["tareId"];
         $results["tareFechaAlta"] = $row["tareFechaAlta"];
