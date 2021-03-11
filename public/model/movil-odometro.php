@@ -76,7 +76,7 @@ class MovilOdometro {
         return $results;
     }
 
-    //---------------------------------------PUT
+    //------PUT
 
     public function put($db) {
         $sql = "UPDATE $this->table
