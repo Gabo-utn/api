@@ -45,3 +45,35 @@ Content-Type: application/json
   "setaTareId": 1,
   "tareNombre": "test1",
 }
+//------------------------------------------------------------------------------
+
+###
+GET http://localhost:8888/index.php/movil-servicio HTTP/1.1
+ ###
+ GET http://localhost:8888/index.php/bitacora-tarea HTTP/1.1
+
+  ###
+ GET http://localhost:8888/index.php/grupo-servicio HTTP/1.1
+
+ ###
+ GET http://localhost:8888/index.php/grupo HTTP/1.1
+
+  ###
+ GET http://localhost:8888/index.php/movil-bitacora HTTP/1.1
+
+  ###
+ GET http://localhost:8888/index.php/movil-grupo HTTP/1.1
+
+ ###
+  ###
+ GET http://localhost:8888/index.php/movil-odometro HTTP/1.1
+  ###
+ GET http://localhost:8888/index.php/movil-servicio HTTP/1.1
+  ###
+ GET http://localhost:8888/index.php/movil HTTP/1.1
+  ###
+ GET http://localhost:8888/index.php/servicio-tarea HTTP/1.1
+  ###
+ GET http://localhost:8888/index.php/servicio HTTP/1.1
+  ###
+ GET http://localhost:8888/index.php/tarea HTTP/1.1
