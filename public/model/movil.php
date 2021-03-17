@@ -1,7 +1,5 @@
 <?php
-
-class Movil
-{
+class Movil {
     public $table = 'Movil';
     public $fields = 'B.moviId
                     ,CONVERT(VARCHAR, B.moviModoFecha, 126) moviModoFecha
@@ -25,91 +23,98 @@ class Movil
                     ,A.numeroMotor
                     ,A.peso      
                     ,A.tienePatrullaje
-                    ,A.CUIT'; 
+                    ,A.CUIT';
     
-    public function get ($db) {
+    //------------------------------------GET
+    public function get($db) {
         $sql = "SELECT TOP 100 $this->fields
-                FROM AVL_Estructura.dbo.Movil A
-                LEFT OUTER JOIN SISEP_ControlFlota.dbo.Movil B ON A.MovilID = B.moviId
-                LEFT OUTER JOIN AVL_Estructura.dbo.Comp C ON A.CompID = C.CompID
-                LEFT OUTER JOIN AVL_Estructura.dbo.TipoMovil T ON T.TipoMovilID = A.TipoMovilID 
-                WHERE A.Activa = 1 AND A.Borrado = 0 ";
-
+        FROM AVL_Estructura.dbo.Movil A
+        LEFT OUTER JOIN SISEP_ControlFlota.dbo.Movil B ON A.MovilID = B.moviId
+        LEFT OUTER JOIN AVL_Estructura.dbo.Comp C ON A.CompID = C.CompID
+        LEFT OUTER JOIN AVL_Estructura.dbo.TipoMovil T ON T.TipoMovilID = A.TipoMovilID 
+        WHERE A.Activa = 1 AND A.Borrado = 0";
 
         $params = null;
 
-        if (isset( $_GET["patente"])){
+        if(isset($_GET["patente"])){
             $params = ["%" . $_GET["patente"] . "%"];
-            $sql = $sql . " AND A.patente LIKE ? ";
+            $sql = $sql . "AND A.patente LIKE ? ";
         };
 
-        if (isset( $_GET["descripcion"])){
+        if(isset($_GET["descripcion"])){
             $params = ["%" . $_GET["descripcion"] . "%"];
-            $sql = $sql . " AND A.descripcion LIKE ? ";
+            $sql = $sql . "AND A.descripcion LIKE ? ";
         };
 
-        if (isset( $_GET["activos"])){
-            $sql = $sql . " AND B.moviBorrado = 0";
-        };
-
-        if (isset( $_GET["dependencia"])){
+        if(isset($_GET["dependencia"])){
             $params = ["%" . $_GET["dependencia"] . "%"];
-            $sql = $sql . " AND C.Nombre LIKE ? ";
+            $sql = $sql . "AND C.nombre LIKE ? ";
         };
 
+        if($_GET["activo"]){
+            $sql = $sql . " AND B.moviBorrado = 0";
+        }
+    
         $stmt = SQL::query($db, $sql, $params);
         $results = [];
+
         while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
             $results[] = $row;
         }
 
         return $results;
-    }
 
-    public function delete ($db, $id) {
-        $stmt = SQL::query($db,
-        "UPDATE $this->table SET moviBorrado = 1
-        WHERE moviId = ?", [$id] );
+    }
+    //------------------------------------DELETE
+
+    public function delete($db,$id){
+        $sql = "UPDATE $this->table
+                SET moviBorrado = 1
+                WHERE moviId = ?";
+        $params = [$id];
+        $stmt = SQL::query($db,$sql,$params);
 
         sqlsrv_fetch($stmt);
+
         return [];
     }
 
-    public function post ($db) {
-        $stmt = SQL::query($db,
-        "INSERT INTO $this->table
-        (moviId
-        ,moviFechaAlta
-        ,moviBorrado)
-        VALUES (?,GETDATE(),0)",
-        [DATA["moviId"]] );
+    //------------------------------------POST
 
-        sqlsrv_fetch($stmt); 
+    public function post($db){
+        $sql = "INSERT INTO $this->table
+                (moviId
+                ,moviFechaAlta
+                ,moviBorrado)
+                VALUES (?,GETDATE(),0)";
+        $params = [DATA["moviId"]];
+
+        $stmt = SQL::query($db,$sql,$params);
+
+        sqlsrv_fetch($stmt);
 
         $results = DATA;
         return $results;
     }
+    //------------------------------------PUT
 
-    public function put ($db) {
-        
-        return;
-        
-        $stmt = SQL::query($db,
-        "UPDATE $this->table
-        SET moviNombre = ?
-            ,moviDescripcion = ?
-        WHERE moviId = ?",
-        [
-            DATA["moviNombre"],
-            DATA["moviDescripcion"],
-            DATA["moviId"]
-        ] );
+    public function put($db){
+        $sql = "UPDATE $this->table
+                    SET moviBorrado = ?,
+                        moviModoOdometro = ?,
+                        moviModoFecha = ?
+                    WHERE moviId = ? ";
 
+        $params = [DATA["moviBorrado"]
+                    ,DATA["moviModoOdometro"]
+                    ,DATA["moviModoFecha"]
+                    ,DATA["moviId"]];
+
+
+        $stmt = SQL::query($db,$sql,$params);
         sqlsrv_fetch($stmt);
+
         return DATA;
     }
-
-
 }
-
 ?>

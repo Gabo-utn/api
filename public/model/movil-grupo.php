@@ -5,18 +5,22 @@ class MovilGrupo {
                         mogrMoviId,
                         mogrGrupId,
                         CONVERT(VARCHAR,mogrFechaAlta,126) mogrFechaAlta,
-                        mogrBorrado';
-    public $join = '';
+                        mogrBorrado,
+                        
+                        grupNombre,
+                        grupDescripcion';
+    public $join = 'LEFT OUTER JOIN Grupo ON mogrGrupId = grupId';
 
     //------------------------------------GET
 
     public function get($db) {
         $sql = "SELECT $this->fields
                 FROM $this->table
+                $this->join
                 WHERE mogrBorrado = 0";
         $params = null;
         if(isset($_GET["mogrMoviId"])){
-            $params = [$GET["mogrMoviId"]];
+            $params = [$_GET["mogrMoviId"]];
             $sql = $sql . "AND mogrMoviId = ?";
         }
 
