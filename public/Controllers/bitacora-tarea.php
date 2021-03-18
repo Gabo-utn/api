@@ -1,7 +1,7 @@
 <?php
-include_once 'model/bitacora-tarea.php';
+include_once 'modules/bitacora-tarea.php';
 
-//-GET
+//----------------------------------GET
 
 $app->get("/bitacora-tarea",function ($request, $response, $args){
     $db = SQL::connect();
@@ -16,7 +16,7 @@ $app->get("/bitacora-tarea",function ($request, $response, $args){
                     ->withHeader('Content-type','aplication/json');
 });
 
-//-DELETE
+//----------------------------------DELETE
 
 $app->delete("/bitacora-tarea/{id}",function ($request, $response, $args){
     $id = $args['id'];
@@ -32,7 +32,7 @@ $app->delete("/bitacora-tarea/{id}",function ($request, $response, $args){
                     ->withHeader('Content-type','aplication/json');
 });
 
-//POST
+//----------------------------------POST
 
 $app->post("/bitacora-tarea",function ($request, $response, $args){
     $db = SQL::connect();
@@ -47,7 +47,7 @@ $app->post("/bitacora-tarea",function ($request, $response, $args){
                     ->withHeader('Content-type','aplication/json');
 });
 
-//PUT
+//----------------------------------PUT
 
 $app->put("/bitacora-tarea",function ($request, $response, $args){
     $db = SQL::connect();
