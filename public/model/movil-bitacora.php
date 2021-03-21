@@ -32,6 +32,8 @@ class MovilBitacora {
             $sql = $sql . "AND mobiMoviId = ? ";
         }
 
+        $sql = $sql . " ORDER BY mobiId desc";
+
         $stmt = SQL::query($db, $sql, $params);
 
         $results = [];

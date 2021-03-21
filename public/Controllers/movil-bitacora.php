@@ -1,11 +1,11 @@
 <?php
-include_once 'model/bitacora-tarea.php';
+include_once 'modules/movil-bitacora.php';
 
 //----------------------------------GET
 
-$app->get("/bitacora-tarea",function ($request, $response, $args){
+$app->get("/movil-bitacora",function ($request, $response, $args){
     $db = SQL::connect();
-    $model = new BitacoraTarea();
+    $model = new MovilBitacora();
     $results = $model->get($db);
     SQL::close($db);
 
@@ -18,10 +18,10 @@ $app->get("/bitacora-tarea",function ($request, $response, $args){
 
 //----------------------------------DELETE
 
-$app->delete("/bitacora-tarea/{id}",function ($request, $response, $args){
+$app->delete("/movil-bitacora/{id}",function ($request, $response, $args){
     $id = $args['id'];
     $db = SQL::connect();
-    $model = new BitacoraTarea();
+    $model = new MovilBitacora();
     $results = $model->delete($db,$id);
     SQL::close($db);
 
@@ -32,11 +32,12 @@ $app->delete("/bitacora-tarea/{id}",function ($request, $response, $args){
                     ->withHeader('Content-type','aplication/json');
 });
 
+
 //----------------------------------POST
 
-$app->post("/bitacora-tarea",function ($request, $response, $args){
+$app->post("/movil-bitacora",function ($request, $response, $args){
     $db = SQL::connect();
-    $model = new BitacoraTarea();
+    $model = new MovilBitacora();
     $results = $model->post($db);
     SQL::close($db);
 
@@ -49,9 +50,9 @@ $app->post("/bitacora-tarea",function ($request, $response, $args){
 
 //----------------------------------PUT
 
-$app->put("/bitacora-tarea",function ($request, $response, $args){
+$app->put("/movil-bitacora",function ($request, $response, $args){
     $db = SQL::connect();
-    $model = new BitacoraTarea();
+    $model = new MovilBitacora();
     $results = $model->put($db);
     SQL::close($db);
 
@@ -61,7 +62,5 @@ $app->put("/bitacora-tarea",function ($request, $response, $args){
     return $response
                     ->withHeader('Content-type','aplication/json');
 });
-
-
 
 ?>

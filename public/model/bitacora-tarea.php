@@ -20,9 +20,9 @@ class BitacoraTarea {
                 $this->join
                 WHERE bitaBorrado = 0";
         $params = null;
-        if(isset($_GET['bitaId'])){
-            $params = [$_GET['bitaTareId']];
-            $sql = $sql . "AND bitaTareId = ?";
+        if(isset($_GET['bitaMobiId'])){
+            $params = [$_GET['bitaMobiId']];
+            $sql = $sql . "AND bitaMobiId = ?";
         }
         $stmt = SQL::query($db, $sql, $params);
 
