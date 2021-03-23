@@ -21,8 +21,8 @@ class MovilBitacora {
 
     //-----------------------------------GET
 
-    public function get($db) {
-        $sql = "SELECT $this->fields
+   public function get($db) {
+        $sql = "SELECT TOP 10 $this->fields
                 FROM $this->table
                 $this->join
                 WHERE mobiBorrado = 0";
@@ -44,6 +44,7 @@ class MovilBitacora {
 
         return $results;
     }
+
 
     //-----------------------------------DELETE
 

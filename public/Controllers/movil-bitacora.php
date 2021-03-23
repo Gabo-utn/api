@@ -1,5 +1,5 @@
 <?php
-include_once 'modules/movil-bitacora.php';
+include_once "model/movil-bitacora.php";
 
 //----------------------------------GET
 

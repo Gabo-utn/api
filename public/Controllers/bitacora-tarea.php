@@ -1,5 +1,5 @@
 <?php
-include_once 'modules/bitacora-tarea.php';
+include_once 'model/bitacora-tarea.php';
 
 //----------------------------------GET
 
