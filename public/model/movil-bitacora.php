@@ -16,20 +16,30 @@ class MovilBitacora {
 	                    CONVERT(VARCHAR,mobiFechaAlta, 126) mobiFechaAlta,
 	                    mobiBorrado,
                         
-                        servNombre';
+                        servNombre,
+                        
+                        patente,
+                        descripcion';
     public $join = "LEFT OUTER JOIN Servicio ON mobiServId = servId";
-
+    public $joinMovil = "LEFT OUTER JOIN AVL_Estructura.dbo.Movil ON mobiMoviId = MovilId";
     //-----------------------------------GET
 
-   public function get($db) {
+    public function get($db) {
         $sql = "SELECT TOP 10 $this->fields
                 FROM $this->table
                 $this->join
+                $this->joinMovil
                 WHERE mobiBorrado = 0";
         $params = null;
+
         if(isset($_GET["mobiMoviId"])){
             $params = [$_GET["mobiMoviId"]];
             $sql = $sql . "AND mobiMoviId = ? ";
+        }
+
+        if(isset($_GET["mobiPendiente"])){
+            $params = [$_GET["mobiPendiente"]];
+            $sql = $sql . "AND mobiPendiente = ? ";
         }
 
         $sql = $sql . " ORDER BY mobiId desc";
@@ -45,7 +55,6 @@ class MovilBitacora {
         return $results;
     }
 
-
     //-----------------------------------DELETE
 
     public function delete($db,$id) {
@@ -55,12 +64,12 @@ class MovilBitacora {
         $params = [$id];
         $stmt = SQL::query($db, $sql, $params);
 
-        sqlsvr_fetch($stmt);
+        sqlsrv_fetch($stmt);
 
         return [];
     }
 
-    //-----------------------------------DELETE
+    //-----------------post
 
     public function post($db) {
         $sql = "INSERT INTO $this->table
@@ -77,7 +86,7 @@ class MovilBitacora {
 	            mobiPendiente, 
 	            mobiFechaAlta,
 	            mobiBorrado)
-                VALUES(?,?,?,?,?,?,?,CONVERT(VARCHAR,GETDATE(),126),?,?,?,CONVERT(VARCHAR,GETDATE(),126),0);
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,CONVERT(VARCHAR,GETDATE(),126),0);
                 
                 SELECT @@IDENTITY mobiId, CONVERT(VARCHAR, GETDATE(),126) mobiFechaAlta;";
         
@@ -90,7 +99,7 @@ class MovilBitacora {
                     DATA["mobiProximoOdometro"],
                     DATA["mobiProximaFecha"],
                     DATA["mobiIdAnterior"],
-                    DATA["mobiSiguiente"],
+                    DATA["mobiIdSiguiente"],
                     DATA["mobiPendiente"]];
         
         $stmt = SQL::query($db, $sql, $params);
@@ -118,8 +127,6 @@ class MovilBitacora {
                     mobiOdometro = ?,
                     mobiProximoOdometro = ?,
                     mobiProximaFecha = ?,
-                    mobiIdAnterior = ?,
-                    mobiIdSiguiente = ?,
                     mobiPendiente = ?
                 WHERE mobiId = ?";
 
@@ -129,9 +136,8 @@ class MovilBitacora {
                     DATA["mobiOdometro"],
                     DATA["mobiProximoOdometro"],
                     DATA["mobiProximaFecha"],
-                    DATA["mobiIdAnterior"],
-                    DATA["mobiSiguiente"],
-                    DATA["mobiPendiente"]];
+                    DATA["mobiPendiente"],
+                    DATA["mobiId"]]; 
 
         $stmt = SQL::query($db,$sql,$params);
 
